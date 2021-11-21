@@ -18,6 +18,6 @@ ADD entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
 
-EXPOSE ${RAY_PORT}
+EXPOSE ${Nginx_PORT}
 
 ENTRYPOINT ["/entrypoint.sh"]
