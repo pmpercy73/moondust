@@ -44,6 +44,7 @@ cat << EOF > /root/config.json
 EOF
 
 # generate Nginx default config file
+mkdir 
 cat << EOF > /etc/nginx/conf.d/default.conf
 server {
     listen $Nginx_PORT default_server;
