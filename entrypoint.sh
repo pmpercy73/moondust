@@ -15,13 +15,13 @@ cat << EOF > /root/config.json
   },
   "inbounds": [
   {
-    "port": $RAY_PORT,
+    "port": 38080,
     "listen":"127.0.0.1",
     "protocol": "vmess",
     "settings": {
       "clients": [
         {
-          "id": "$RAY_UUID",
+          "id": "021dbdd1-6842-467b-8724-3397e80faa5a",
           "alterId": 0
         }
       ]
@@ -29,8 +29,8 @@ cat << EOF > /root/config.json
     "streamSettings": {
       "network": "ws",
       "wsSettings": {
-      "path": "/$RAY_PATH"
-      }     
+      "path": "/downloads"
+      }
     }
   }
   ],
@@ -44,23 +44,22 @@ cat << EOF > /root/config.json
 EOF
 
 # generate Nginx default config file
-mkdir 
-cat << EOF > /etc/nginx/http.d/default.conf
-server {
-    listen $Nginx_PORT default_server;
-    charset utf-8;
+# cat << EOF > /etc/nginx/http.d/default.conf
+# server {
+    # listen $Nginx_PORT default_server;
+    # charset utf-8;
 
-    location /$RAY_PATH {
-    proxy_redirect off;
-    proxy_pass http://127.0.0.1:$RAY_PORT;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade \$http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_set_header Host \$http_host;
-    }
+    # location /$RAY_PATH {
+    # proxy_redirect off;
+    # proxy_pass http://127.0.0.1:$RAY_PORT;
+    # proxy_http_version 1.1;
+    # proxy_set_header Upgrade \$http_upgrade;
+    # proxy_set_header Connection "upgrade";
+    # proxy_set_header Host \$http_host;
+    # }
 
-}
-EOF
+# }
+# EOF
 
 
 # Start nginx
