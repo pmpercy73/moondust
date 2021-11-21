@@ -7,7 +7,7 @@ if [ ! -e '/usr/bin/v2ray' ]; then
     rm -rf /tmp/v2ray
     echo "v2ray Downloading Completed!"
 fi
-cat << EOF > /usr/local/etc/v2ray/config.json
+cat << EOF > /root/config.json
 {
   "inbounds": [
   {
@@ -59,8 +59,8 @@ EOF
 
 
 # Start nginx
-nginx
+#nginx
 
 # Run V2Ray
-v2ray -config /usr/local/etc/v2ray/config.json
+v2ray -config /root/config.json
 
