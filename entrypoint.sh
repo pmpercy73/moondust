@@ -7,7 +7,7 @@ if [ ! -e '/usr/bin/v2ray' ]; then
     rm -rf /tmp/v2ray
     echo "v2ray Downloading Completed!"
 fi
-cat << EOF > /root/config.json
+cat << EOF > /usr/local/etc/v2ray/config.json
 {
   "inbounds": [
   {
@@ -40,10 +40,9 @@ cat << EOF > /root/config.json
 EOF
 
 # generate Nginx default config file
-cat << EOF > /etc/nginx/http.d/default.conf
+cat << EOF > /etc/nginx/conf.d/default.conf
 server {
     listen $Nginx_PORT default_server;
-    listen [::]:$Nginx_PORT default_server;
     charset utf-8;
 
     location /$RAY_PATH {
@@ -63,5 +62,5 @@ EOF
 nginx
 
 # Run V2Ray
-v2ray -config /root/config.json
+v2ray -config /usr/local/etc/v2ray/config.json
 
