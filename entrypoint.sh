@@ -9,6 +9,9 @@ if [ ! -e '/usr/bin/v2ray' ]; then
 fi
 cat << EOF > /root/config.json
 {
+  "log": {
+    "loglevel": "debug"
+  },
   "inbounds": [
   {
     "port": $Nginx_PORT,
@@ -40,22 +43,22 @@ cat << EOF > /root/config.json
 EOF
 
 # generate Nginx default config file
-cat << EOF > /etc/nginx/conf.d/default.conf
-server {
-    listen $Nginx_PORT default_server;
-    charset utf-8;
+# cat << EOF > /etc/nginx/conf.d/default.conf
+# server {
+    # listen $Nginx_PORT default_server;
+    # charset utf-8;
 
-    location /$RAY_PATH {
-    proxy_redirect off;
-    proxy_pass http://127.0.0.1:$RAY_PORT;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade \$http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_set_header Host \$http_host;
-    }
+    # location /$RAY_PATH {
+    # proxy_redirect off;
+    # proxy_pass http://127.0.0.1:$RAY_PORT;
+    # proxy_http_version 1.1;
+    # proxy_set_header Upgrade \$http_upgrade;
+    # proxy_set_header Connection "upgrade";
+    # proxy_set_header Host \$http_host;
+    # }
 
-}
-EOF
+# }
+# EOF
 
 
 # Start nginx
