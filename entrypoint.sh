@@ -15,7 +15,6 @@ cat << EOF > /root/config.json
   "inbounds": [
   {
     "port": $Nginx_PORT,
-    "listen":"127.0.0.1",
     "protocol": "vmess",
     "settings": {
       "clients": [
