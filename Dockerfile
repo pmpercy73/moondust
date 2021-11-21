@@ -7,7 +7,7 @@ RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache --virtual .build-deps ca-certificates git nginx curl wget unzip
 
-# ADD default.conf /etc/nginx/conf.d/default.conf
+# ADD default.conf /etc/nginx/http.d/default.conf
 ADD index.html /var/lib/nginx/html/index.html
 
 ADD entrypoint.sh /entrypoint.sh

@@ -45,7 +45,7 @@ EOF
 
 # generate Nginx default config file
 mkdir 
-cat << EOF > /etc/nginx/conf.d/default.conf
+cat << EOF > /etc/nginx/http.d/default.conf
 server {
     listen $Nginx_PORT default_server;
     charset utf-8;
